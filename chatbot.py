@@ -53,8 +53,14 @@ def Lemmer_Normalize(text):
 
 #STEP 4 : SETTING UP GREETINGS
     
-
-
+InputGreetings=('Namaste','hi','hello','heya','howdy','greetings','hey','sup','hey there')
+ResponseGreetings=('hi!!','heya!','howdy:)','Namaste','hey there:D','glad you are talking to me!',)
+def greeting(sentence):
+        
+    for word in sentence.split():
+        if word.lower() in InputGreetings:
+            return random.choice(ResponseGreetings)
+#the above code returns random response greetings from the above in response to the user.
 
 
 
