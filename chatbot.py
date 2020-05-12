@@ -36,3 +36,28 @@ sentenceTokens=nltk.sent_tokenize(data)
 #converting text into sentences: creating sentence tokens
 wordTokens=nltk.word_tokenize(data)
 #converting the sentences to words: creating word tokens
+sentenceTokens[:50]
+wordTokens[:50]
+
+
+#STEP 3 :PREPROCESSING
+lemmers=nltk.stem.WordNetLemmatizer()
+#it ensures that the root word to which our word has been converted is a valid word
+def Lemmer_Tokens(tokens):
+    return [lemmers.lemmatize(token) for token in tokens]
+removePunctuation=dict((ord(punct),None) for punct in string.punctuation)
+#removes the punctuation marks in data
+def Lemmer_Normalize(text):
+    return Lemmer_Tokens(nltk.word_tokenize(text.lower().translate(removePunctuation)))
+#the above function takes up user queries, converts into lower case and removes punctuation marks if any
+
+#STEP 4 : SETTING UP GREETINGS
+    
+
+
+
+
+
+
+
+
