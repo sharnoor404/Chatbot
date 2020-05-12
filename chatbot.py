@@ -62,6 +62,31 @@ def greeting(sentence):
             return random.choice(ResponseGreetings)
 #the above code returns random response greetings from the above in response to the user.
 
+#STEP 4 : VECTORIZER
+            
+from sklearn.feature_extraction.text import TfidfVectorizer
+#this library is used to convert words into vectors/arrays
+from sklearn.metrics.pairwise import cosine_similarity
+#the cosine similarity library helps find similarities between the user questions and our data
+def response(user_response):
+    chatbot_response=''
+    sentenceTokens.append(user_response)
+    TfidfVec=TfidfVectorizer(tokenizer=Lemmer_Normalize,stop_words='english')
+    tfidf=TfidfVec.fit_transform(sentenceTokens)
+    #learning from our sentence tokens and converting it into vectors
+    vals=cosine_similarity(tfidf[-1],tfidf)
+    #tries to find similarities between text tokens and user questions
+    idx=vals.argsort()[0][-2]
+    flat=vals.flatten()
+    #converting values to row/column matrix
+    flat.sort()
+    req_tfidf=flat[-2]
+    if(req_tfidf==0):# no match found
+        chatbot_response=chatbot_response+"I'm sorry, I'm not sure if I understood what you just said!."
+        return chatbot_response
+    else:
+        chatbot_response=chatbot_response+sent_tokens[idx]
+        return chatbot_response
 
 
 
