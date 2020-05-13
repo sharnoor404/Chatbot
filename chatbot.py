@@ -68,6 +68,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 #this library is used to convert words into vectors/arrays
 from sklearn.metrics.pairwise import cosine_similarity
 #the cosine similarity library helps find similarities between the user questions and our data
+
 def response(user_response):
     chatbot_response=''
     sentenceTokens.append(user_response)
@@ -85,10 +86,18 @@ def response(user_response):
         chatbot_response=chatbot_response+"I'm sorry, I'm not sure if I understood what you just said!."
         return chatbot_response
     else:
-        chatbot_response=chatbot_response+sent_tokens[idx]
+        chatbot_response=chatbot_response+sentenceTokens[idx]
         return chatbot_response
 
-
-
+flag=True
+print("Hi! I am Carter. I'm here to help you with all your queries about Global Warming! Type'Bye' if you wish to exit.")
+while(flag==True):
+    user_response=input()
+    user_response=user_response.lower()
+    if(user_response!='bye'):
+        if(user_response=='thanks' or user_response=='thank you'):
+            flag=False
+            print("chatbot: You are welcome")
+     
 
 
