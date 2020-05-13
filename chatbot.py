@@ -95,9 +95,23 @@ while(flag==True):
     user_response=input()
     user_response=user_response.lower()
     if(user_response!='bye'):
+       # if(user_response=='how are you?' or user_response=='howdie?'):
+        #    print("chatbot: Im great!")
+        #else
         if(user_response=='thanks' or user_response=='thank you'):
             flag=False
             print("chatbot: You are welcome")
-     
+        else:
+            if(greeting(user_response)!=None):
+                print("chatbot: "+greeting(user_response))
+            else:
+                print("chatbot: ",end="")
+                print(response(user_response))
+                sentenceTokens.remove(user_response)
+                
+    else:
+        flag=False
+        print("chatbot: Bye! Take care!")
+
 
 
